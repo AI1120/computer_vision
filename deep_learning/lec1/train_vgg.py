@@ -1,5 +1,7 @@
 #set the matplotlib backend so figures can be saved in the background
 import matplotlib
+import secrets
+
 matplotlib.use("Agg")
 
 #import the necessary packages
@@ -13,7 +15,6 @@ from imutils import paths
 import matplotlib.pyplot as plt
 import numpy as np
 import argparse
-import random   
 import pickle
 import cv2
 import os
@@ -37,8 +38,8 @@ labels = []
 
 # grab the image paths and randomly shuffle them
 imagePaths = sorted(list(paths.list_images(args["dataset"])))
-random.seed(42)
-random.shuffle(imagePaths)
+secrets.SystemRandom().seed(42)
+secrets.SystemRandom().shuffle(imagePaths)
 
 # loop over the input images
 for imagePath in imagePaths:
